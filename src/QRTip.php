@@ -8,19 +8,20 @@ use MultiSafepay\Api\Transactions\TransactionResponse;
 use MultiSafepay\Sdk;
 use MultiSafepay\ValueObject\Money;
 
-class Transaction
+class QRTip
 {
-  public const API_KEY = '6e782b6c9747acd10abc3b4babd0f30fe656769a';
-  public const PRODUCTION = false;
-
+  private string $apiKey;
+  private bool $isProduction;
   private Sdk $sdk;
   private string $orderId;
   private string $description;
   private Money $amount;
 
-  public function __construct(int $amount)
+  public function __construct(string $apiKey, bool $isProduction, int $amount)
   {
-    $this->sdk = new Sdk(self::API_KEY, self::PRODUCTION);
+    $this->apiKey = $apiKey;
+    $this->isProduction = $isProduction;
+    $this->sdk = new Sdk($this->apiKey, $this->isProduction);
     $this->orderId = (string) time();
     $this->description = 'QR Tip #' . $this->orderId;
     $this->amount = new Money($amount);
