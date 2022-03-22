@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Plugin Name: QR Tips Plugin
+ * Description: Generate a QR for tipping through MultiSafepay
+ * Version: 0.1
+ * Author: Robin de Laater
+ * Author URI: https://delaater.nl/
+ */
+
 use QRTips\WooCommerce\QRTip;
 
 require 'vendor/autoload.php';
