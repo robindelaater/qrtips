@@ -1,0 +1,6 @@
+{
+    "require": {
+        "guzzlehttp/guzzle": "7.3",
+        "http-interop/http-factory-guzzle": "1.1"
+    }
+}
