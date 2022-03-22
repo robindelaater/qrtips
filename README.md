@@ -1,6 +1,6 @@
 # QR Tips
 
-QR Tips is a Wordpress plugin that generates a QR code for sending a tip.
+QR Tips is a Wordpress plugin that generates a QR code for sending a tip via MultiSafepay.
 
 ## Installation
 
