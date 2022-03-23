@@ -22,8 +22,8 @@ class QRTip
     $this->apiKey = $apiKey;
     $this->isProduction = $isProduction;
     $this->sdk = new Sdk($this->apiKey, $this->isProduction);
-    $this->orderId = (string) time();
-    $this->description = 'QR Tip #' . $this->orderId . 'at ' . get_bloginfo('name');
+    $this->orderId = (string) 'QR'.time();
+    $this->description = get_bloginfo('name') . ' QR Tip: ' . $this->orderId;
     $this->amount = new Money($amount);
   }
 
