@@ -12,45 +12,24 @@ use QRTips\WooCommerce\QRTip;
 
 require 'vendor/autoload.php';
 
-if ($_POST) {
-  $api_key = $_POST['qrtips_apikey'];
-  $production = $_POST['qrtips_production'];
-  $qrTipsTitle = $_POST['qrtips_title'];
-  $qrTipsAmount = $_POST['qrtips_amount'];
-  update_option('qrtips_apikey', $api_key);
-  update_option('qrtips_production', $production);
-  update_option('qrtips_title', $qrTipsTitle);
-  update_option('qrtips_amount', $qrTipsAmount);
-}
-
-
 add_action('after_setup_theme', function () {
   require plugin_dir_path(__FILE__) . 'src/QRTip.php';
 }, 5);
 
+add_action('admin_init', function () {
+    register_setting('qr_tips_options', 'qrtips_apikey');
+    register_setting('qr_tips_options', 'qrtips_production');
+    register_setting('qr_tips_options', 'qrtips_title');
+    register_setting('qr_tips_options', 'qrtips_amount');
+});
+
 function qrTipsOptionsPage()
 {
-  if (!get_option('qrtips_apikey')) {
-    add_option('qrtips_apikey');
-  }
-
-  if (!get_option('qrtips_production')) {
-    add_option('qrtips_production');
-  }
-
-  if (!get_option('qrtips_title')) {
-    add_option('qrtips_title', "QR Tips!");
-  }
-
-  if (!get_option('qrtips_amount')) {
-    add_option('qrtips_amount', 500);
-  }
-
   ?>
   <div>
     <h1>QR Tips Settings</h1>
-    <form method="post" style="row-gap: 1rem; display: flex; flex-direction: column; max-width: 400px; width: 100%; padding-right:1em;">
-      <?php settings_fields('qrTipsOptionsField'); ?>
+    <form method="post" action="options.php" style="row-gap: 1rem; display: flex; flex-direction: column; max-width: 400px; width: 100%; padding-right:1em;">
+      <?php settings_fields('qr_tips_options'); ?>
       <div style="display: flex; flex-direction: column; row-gap: 0.2rem;">
         <label style="font-weight: 600;" for="qrtips_apikey">MultiSafepay API key</label>
         <input type="text" style="width: 100%;" id="qrtips_apikey" name="qrtips_apikey"
@@ -97,7 +76,7 @@ function generateQrCode(): string
     $transaction = new QRTip($apiKey, $isProduction, $qrTipsAmount);
     $content = '<div style="display: flex; flex-direction: column; text-align: center; max-width: 300px; background-color: rgba(0, 0, 0, 0.1); padding: 1em;">';
     $content .= '<h2 style="color: black; font-weight: 500;">'.$qrTipsTitle.'</h2>';
-    $content .= '<img style="margin-bottom: 1em;" src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=' . $transaction->createTransaction() . '" title="Link to payment page" />';
+    $content .= '<img style="margin-bottom: 1em;" src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=' . $transaction->createTransaction() . '" title="Link to payment page" />';
     $content .= '<p>Pay via MultiSafepay</p>';
     $content .= '</div>';
 
