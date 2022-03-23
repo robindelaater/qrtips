@@ -23,7 +23,7 @@ class QRTip
     $this->isProduction = $isProduction;
     $this->sdk = new Sdk($this->apiKey, $this->isProduction);
     $this->orderId = (string) time();
-    $this->description = 'QR Tip #' . $this->orderId;
+    $this->description = 'QR Tip #' . $this->orderId . 'at ' . get_bloginfo('name');
     $this->amount = new Money($amount);
   }
 
