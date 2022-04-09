@@ -1,0 +1,4 @@
+parameters:
+	scanDirectories:
+		- src
+		- tests

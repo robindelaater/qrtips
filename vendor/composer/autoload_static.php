@@ -18,9 +18,14 @@ class ComposerStaticInit46fdb6a03a49f4b220914cfedb276677
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Http\\Client\\' => 16,
         ),
+        'M' => 
+        array (
+            'MultiSafepay\\' => 13,
+        ),
         'H' => 
         array (
             'Http\\Factory\\Guzzle\\' => 20,
+            'Http\\Discovery\\' => 15,
         ),
         'G' => 
         array (
@@ -40,9 +45,17 @@ class ComposerStaticInit46fdb6a03a49f4b220914cfedb276677
         array (
             0 => __DIR__ . '/..' . '/psr/http-client/src',
         ),
+        'MultiSafepay\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/multisafepay/php-sdk/src',
+        ),
         'Http\\Factory\\Guzzle\\' => 
         array (
             0 => __DIR__ . '/..' . '/http-interop/http-factory-guzzle/src',
+        ),
+        'Http\\Discovery\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-http/discovery/src',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (
