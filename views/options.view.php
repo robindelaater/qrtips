@@ -26,11 +26,6 @@
             <input type="text" style="width: 100%;" id="qrtips_title" name="qrtips_title"
                    value="<?php echo get_option('qrtips_title'); ?>"/>
         </div>
-        <div style="display: flex; flex-direction: column; row-gap: 0.2rem;">
-            <label style="font-weight: 600;" for="qrtips_amount">QR Tips Amount (cents)</label>
-            <input type="number" style="width: 100%;" id="qrtips_amount" name="qrtips_amount"
-                   value="<?php echo get_option('qrtips_amount'); ?>"/>
-        </div>
         <?php submit_button(); ?>
     </form>
 </div>

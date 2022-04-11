@@ -57,6 +57,7 @@ if (!empty($customerData)) {
             <img id="qrtip-img"
                  src='https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=<?= $transaction->create() ?>&title="Link to payment page"'
                  alt="">
+            <h2>€<?= $_POST['amount'] / 100 ?></h2>
             <?php
         }
         ?>
