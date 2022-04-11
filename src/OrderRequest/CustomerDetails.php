@@ -7,15 +7,16 @@ use MultiSafepay\Api\Transactions\OrderRequest\Arguments\CustomerDetails as Mult
 class CustomerDetails {
 
     /**
-     * @param array $customerAddress
+     * @param array $customerData
      * @return MultiSafepayCustomerDetails
      */
-    public function create(array $customerAddress): MultiSafepayCustomerDetails
+    public function create(array $customerData): MultiSafepayCustomerDetails
     {
         return (new MultiSafepayCustomerDetails())
-            ->addFirstName("Robin")
-            ->addLastName("de Laater")
-            ->addEmailAddressAsString("robin@test.com")
-            ->addAddress((new Address())->create($customerAddress));
+            ->addFirstName($customerData['firstname'])
+            ->addLastName($customerData['lastname'])
+            ->addEmailAddressAsString($customerData['email'])
+            ->addPhoneNumberAsString($customerData['tel'])
+            ->addAddress((new Address())->create($customerData));
     }
 }

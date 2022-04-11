@@ -25,17 +25,17 @@ class OrderRequest {
     }
 
     /**
+     * @param array $customerData
+     *
      * @return MultiSafepayOrderRequest
      */
-    public function create(): MultiSafepayOrderRequest
+    public function create(array $customerData): MultiSafepayOrderRequest
     {
-        $customerDetails = [];
-
         return (new MultiSafepayOrderRequest())
             ->addType('redirect')
             ->addOrderId($this->orderId)
             ->addDescriptionText($this->description)
-            ->addCustomer((new CustomerDetails())->create($customerDetails))
+            ->addCustomer((new CustomerDetails())->create($customerData))
             ->addMoney($this->amount)
             ->addPluginDetails((new OrderRequest\PluginDetails())->create());
     }
