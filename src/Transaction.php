@@ -22,7 +22,7 @@ class Transaction
         $this->orderRequest = $orderRequest;
     }
 
-    public function createTransaction(): string
+    public function create(): string
     {
         /** @var TransactionResponse $transaction */
         try {

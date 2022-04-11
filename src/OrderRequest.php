@@ -4,6 +4,7 @@ namespace QRTips\WooCommerce;
 
 use MultiSafepay\Api\Transactions\OrderRequest as MultiSafepayOrderRequest;
 use MultiSafepay\ValueObject\Money;
+use QRTips\WooCommerce\OrderRequest\CustomerDetails;
 
 class OrderRequest {
 
@@ -28,10 +29,13 @@ class OrderRequest {
      */
     public function create(): MultiSafepayOrderRequest
     {
+        $customerDetails = [];
+
         return (new MultiSafepayOrderRequest())
             ->addType('redirect')
             ->addOrderId($this->orderId)
             ->addDescriptionText($this->description)
+            ->addCustomer((new CustomerDetails())->create($customerDetails))
             ->addMoney($this->amount)
             ->addPluginDetails((new OrderRequest\PluginDetails())->create());
     }
