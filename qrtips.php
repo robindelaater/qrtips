@@ -33,7 +33,8 @@ function qrTipsRegisterOptionsPage()
     add_options_page('QR Tips', 'QR Tips Settings', 'manage_options', 'qr-tips', 'qrTipsOptionsPage');
 }
 
-function qrTipsOptionsPage() {
+function qrTipsOptionsPage()
+{
     require 'views/options.view.php';
 }
 
@@ -46,12 +47,12 @@ function generateQrCode(): string
     $qrTipsTitle = get_option('qrtips_title');
     $qrTipsAmount = get_option('qrtips_amount');
 
-
     if ($apiKey) {
         require 'views/qrtip.view.php';
     }
 
-    return '';
+    return "<p style='color: blueviolet; text-decoration: underline; font-weight: 500;'>The QR Tips plugin won't work because
+        you forgot to enter an API key!</p>";
 }
 
 add_shortcode('qr_tips', 'generateQrCode');

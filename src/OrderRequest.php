@@ -6,7 +6,8 @@ use MultiSafepay\Api\Transactions\OrderRequest as MultiSafepayOrderRequest;
 use MultiSafepay\ValueObject\Money;
 use QRTips\WooCommerce\OrderRequest\CustomerDetails;
 
-class OrderRequest {
+class OrderRequest
+{
 
     private string $orderId;
     private string $description;
@@ -19,7 +20,7 @@ class OrderRequest {
      */
     public function __construct(int $amount)
     {
-        $this->orderId = 'QR'.time();
+        $this->orderId = 'QR' . time();
         $this->description = get_bloginfo('name') . ' QR Tip: ' . $this->orderId;
         $this->amount = new Money($amount);
     }

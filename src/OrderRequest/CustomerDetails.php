@@ -4,7 +4,8 @@ namespace QRTips\WooCommerce\OrderRequest;
 
 use MultiSafepay\Api\Transactions\OrderRequest\Arguments\CustomerDetails as MultiSafepayCustomerDetails;
 
-class CustomerDetails {
+class CustomerDetails
+{
 
     /**
      * @param array $customerData

@@ -4,7 +4,8 @@ namespace QRTips\WooCommerce\OrderRequest;
 
 use MultiSafepay\Api\Transactions\OrderRequest\Arguments\PluginDetails as MultiSafepayPluginDetails;
 
-class PluginDetails{
+class PluginDetails
+{
     /**
      * @return MultiSafepayPluginDetails
      */
