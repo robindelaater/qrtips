@@ -45,7 +45,6 @@ function generateQrCode(): string
     $apiKey = get_option('qrtips_apikey');
     $isProduction = get_option('qrtips_production');
     $qrTipsTitle = get_option('qrtips_title');
-    $qrTipsAmount = get_option('qrtips_amount');
 
     if ($apiKey) {
         require 'views/qrtip.view.php';
