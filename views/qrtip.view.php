@@ -1,30 +1,3 @@
-<?php
-
-use QRTips\WooCommerce\OrderRequest;
-use QRTips\WooCommerce\Transaction;
-
-$customerData = [];
-
-if ($_POST) {
-    $customerData = [
-        'firstname' => $_POST['firstname'],
-        'lastname' => $_POST['lastname'],
-        'email' => $_POST['email'],
-        'tel' => $_POST['tel'],
-        'streetname' => $_POST['streetname'],
-        'housenumber' => $_POST['housenumber'],
-        'zipcode' => $_POST['zipcode'],
-        'city' => $_POST['city'],
-        'country' => $_POST['country']
-    ];
-}
-
-if (!empty($customerData)) {
-    $orderRequest = (new OrderRequest($_POST['amount']))->create($customerData);
-    $transaction = new Transaction($apiKey, $isProduction, $orderRequest);
-}
-
-?>
 <section>
     <div style="display: flex; flex-direction: column; text-align: center; max-width: 300px; background-color: rgba(0, 0, 0, 0.1); padding: 1em;">
         <h2 style="color: black; font-weight: 500;">

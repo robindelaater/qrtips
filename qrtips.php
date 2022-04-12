@@ -47,6 +47,27 @@ function generateQrCode(): string
     $qrTipsTitle = get_option('qrtips_title');
 
     if ($apiKey) {
+        $customerData = [];
+
+        if ($_POST) {
+            $customerData = [
+                'firstname' => $_POST['firstname'],
+                'lastname' => $_POST['lastname'],
+                'email' => $_POST['email'],
+                'tel' => $_POST['tel'],
+                'streetname' => $_POST['streetname'],
+                'housenumber' => $_POST['housenumber'],
+                'zipcode' => $_POST['zipcode'],
+                'city' => $_POST['city'],
+                'country' => $_POST['country']
+            ];
+        }
+
+        if (!empty($customerData)) {
+            $orderRequest = (new OrderRequest($_POST['amount']))->create($customerData);
+            $transaction = new Transaction($apiKey, $isProduction, $orderRequest);
+        }
+
         require 'views/qrtip.view.php';
     }
 
